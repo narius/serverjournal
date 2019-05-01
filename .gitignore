@@ -49,3 +49,4 @@ frontend/dist
 frontend/node_modules
 log
 wsgi.ini
+*.db

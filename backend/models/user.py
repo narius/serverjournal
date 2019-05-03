@@ -14,14 +14,11 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
-    def is_authenticated(self):
-        True
+    is_authenticated = True
 
-    def is_active(self):
-        True
+    is_active = True
 
-    def is_anonymous(self):
-        False
+    is_anonymous = False
 
     def get_id(self):
         logging.info("User.get_id")

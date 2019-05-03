@@ -9,7 +9,16 @@ import logging
 
 class LoginApi(Resource):
     def get(self):
-        return json.loads(json.dumps({'return':'get_login',}))
+        if current_user.is_anonymous:
+            return json.loads(json.dumps({'user': None,}))
+        return json.loads(json.dumps({'user': {
+            'id': current_user.id,
+            'username': current_user.username,
+            'mail': current_user.email,
+            'firstname': current_user.firstname,
+            'surname': current_user.surname
+
+        }, }))
 
     def post(self):
         logging.info("LoginApi.post")

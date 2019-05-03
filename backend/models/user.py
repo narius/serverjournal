@@ -1,3 +1,4 @@
+import logging
 from backend.models.db import db
 
 
@@ -10,6 +11,18 @@ class User(db.Model):
     surname = db.Column(db.String(120), nullable=False)
     entries_id = db.relationship('JournalEntry', backref='user', lazy=True)
 
-
     def __repr__(self):
         return '<User %r>' % self.username
+
+    def is_authenticated(self):
+        True
+
+    def is_active(self):
+        True
+
+    def is_anonymous(self):
+        False
+
+    def get_id(self):
+        logging.info("User.get_id")
+        return str(self.id)

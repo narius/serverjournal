@@ -6,6 +6,7 @@ class Server(db.Model):
     name = db.Column(db.String(80), unique=True, nullable=False)
     ip = db.Column(db.String(120), unique=True, nullable=False)
     description = db.Column(db.String(120), nullable=False)
+    entries_id = db.relationship('JournalEntry', backref='server', lazy=True)
 
     def __repr__(self):
         return '<User %r>' % self.name
